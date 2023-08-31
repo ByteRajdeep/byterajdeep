@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cool Contact Page</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style>
+        /* Your existing CSS styles */
+
+        /* Add styles for the header section */
+        header {
+            text-align: center;
+            background-color: #007BFF;
+            color: #fff;
+            padding: 20px;
+        }
+
+        /* Style the main content section */
+        .content {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.2);
+            margin-top: 3%;
+            width: 60%;
+            animation: fadeIn 1s ease;
+            margin: 0 auto;
+        }
+
+        /* Style the form-heading */
+        .form-heading {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #007BFF;
+            font-size: 24px;
+            animation: slideInDown 1s ease;
+        }
+
+        /* Style the form-group */
+        .form-group {
+            margin-bottom: 20px;
+            animation: slideInLeft 1s ease;
+        }
+
+        /* Style the form-control */
+        .form-control {
+            border-radius: 10px;
+            padding: 15px;
+            transition: all 0.3s ease;
+        }
+
+        /* Add hover effect for the form-control elements */
+        .form-control:hover {
+            transform: scale(1.05);
+        }
+
+        /* Style the submit button */
+        .btnSubmit {
+            width: 100%;
+            border-radius: 10px;
+            padding: 15px;
+            background-color: #007BFF;
+            border: none;
+            cursor: pointer;
+            color: #fff;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            animation: fadeIn 1s ease, colorChange 2s infinite alternate;
+        }
+
+        /* Add hover effect for the submit button */
+        .btnSubmit:hover {
+            background-color: #0056b3;
+        }
+
+        /* Add your custom styles here */
+
+        /* Style the footer section */
+        footer {
+            text-align: center;
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+        }
+
+        /* Additional animations and effects */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInDown {
+            from {
+                transform: translateY(-50%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Example color change animation */
+        @keyframes colorChange {
+            0% {
+                background-color: #007BFF;
+            }
+            50% {
+                background-color: #0056b3;
+            }
+            100% {
+                background-color: #007BFF;
+            }
+        }
+    </style>
+</head> 
+<body>
+    <header>
+        <h1>Welcome to Our Contact Page</h1>
+        <p>Feel free to get in touch with us!</p>
+    </header>
+
+    <div class="content">
+        <h3 class="form-heading">🚀 Customer Information 🌐</h3>
+        <form method="post" autocomplete="off" name="google-sheet">
+            <div class="form-group">
+                <input type="text" name="Name" class="form-control" placeholder="👤 Your Name *" required="">
+            </div>
+            <div class="form-group">
+                <input type="email" name="Email" class="form-control" placeholder="📧 Your Email *" required="">
+            </div>
+            <div class="form-group">
+                <input type="tel" name="Phone" class="form-control" placeholder="📞 Your Contact Number *" required="">
+            </div>
+            <div class="form-group">
+                <textarea name="Message" class="form-control" placeholder="✉️ Your Message" rows="5" required=""></textarea>
+            </div>
+            <div class="form-group">
+                <input type="submit" name="submit" class="btnSubmit btn-block"  value="Submit ✉️">
+            </div>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 INFINITY KIA</p>
+    </footer>
+
+    <script>
+        // Your existing JavaScript code
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwHPOIkUXDaW7J0x0EJWz9P-iUcyEJ5ABjoRAtJ0UT-m4C8Msfg7yiW2JxHeM1_CvHs/exec';
+        const form = document.forms['google-sheet'];
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => alert("Thanks for Contacting us! We Will Contact You Soon."))
+                .catch(error => console.error('Error!', error.message));
+        });
+    </script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body>
+</html>
